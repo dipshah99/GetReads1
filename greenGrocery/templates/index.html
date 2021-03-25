@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+{% comment %} {% load extras %} {% endcomment %}
+<section id="home-section" class="hero">
+  <div class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('{% static 'images/bg_1.jpg' %}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+          <div class="col-md-12 ftco-animate text-center">
+            <h1 class="mb-2">We sell Best Books &amp; Novels</h1>
+            <h2 class="subheading mb-4">
+              We deliver original Books &amp; Novels
+            </h2>
+            <p>
+              <a href="{% url 'about' %}" class="btn btn-primary styled-border">View Details</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-item" style="background-image: url('{% static 'images/5-edited.jpg' %}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+          <div class="col-sm-12 ftco-animate text-center">
+            <h1 class="mb-2">100% Original &amp; boxed Books</h1>
+            <h2 class="subheading mb-4">
+              We deliver original Books &amp; Novels
+            </h2>
+            <p>
+              <a href="{% url 'about' %}" class="btn btn-primary styled-border">View Details</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row no-gutters ftco-services">
+      <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services mb-md-0 mb-4">
+          <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+            <span class="flaticon-shipped"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Free Shipping</h3>
+            <span>On order over ₹1000</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services mb-md-0 mb-4">
+          <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+            <span class="flaticon-diet"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">100% Original</h3>
+            <span>Product well packaged</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services mb-md-0 mb-4">
+          <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+            <span class="flaticon-award"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Superior Quality</h3>
+            <span>Quality Products</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services mb-md-0 mb-4">
+          <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+            <span class="flaticon-customer-service"></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Support</h3>
+            <span>24/7 Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section ftco-category ftco-no-pt">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 order-md-last align-items-stretch d-flex">
+            <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"
+              style="background-image: url('{% static 'images/books1.jpg' %}');">
+              <div class="text text-center">
+                <h2>Books</h2>
+                <p>"A Room without Books is like a Body without Soul" - Cicero</p>
+                <p>
+                  <a href="{% url 'products:products' %}" class="btn btn-primary styled-border">Buy now</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
+              style="background-image: url('{% static 'images/books.jpg' %}');">
+              <div class="text px-3 py-1">
+                <h2 class="mb-0"><a href="{% url 'products:vegetables' %}">Books</a></h2>
+              </div>
+            </div>
+            <div class="category-wrap ftco-animate img d-flex align-items-end"
+              style="background-image: url('{% static 'images/novels.jpg' %}');">
+              <div class="text px-3 py-1">
+                <h2 class="mb-0"><a href="{% url 'products:fruits' %}">Novels</a></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center mb-3 pb-3">
+      <div class="col-md-12 heading-section text-center ftco-animate">
+        <span class="subheading">Products</span>
+        <h2 class="mb-4">Our Featured Products</h2>
+        <p class="lead">
+         Best Books and Novels now made easily
+          available at your doorstep.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% for item in qs %}
+      <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="product">
+          <a href="{% url 'products:featured' item.slug %}"
+            class="add-to-cart d-flex justify-content-center align-items-center text-center">
+            <span class="img-prod"><img class="img-fluid" src="{{ item.image.url }}" alt="" />
+              {% if item.on_sale %}
+              <span class="status">{{ item.discount }}%</span>
+              {% endif %}
+              <div class="overlay"></div>
+            </span>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3>{{ item.title }}</h3>
+            <div class="d-flex">
+              <div class="pricing">
+                <p class="price">
+                  {% if item.on_sale %}
+                  <span class="mr-2 price-dc">₹{{ item.price }}</span><span
+                    class="price-sale">₹{{ item.discounted_price }}</span>
+                  {% else %}
+                  <span>₹{{item.price}}</span>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+            <div class="bottom-area d-flex px-3">
+              <div class="m-auto d-flex">
+                <a href="{% url 'products:featured' item.slug %}"
+                  class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                  <span><i class="ion-ios-menu"></i></span>
+                </a>
+                <!-- <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                  <span><i class="ion-ios-cart"></i></span>
+                </a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<section class="ftco-section subscription-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 heading-section ftco-animate text-center">
+        <span class="subheading">Subscriptions</span>
+        <h2 class="mb-4">
+          Want hassle free Books and Novels at your home?
+        </h2>
+        <p class="">
+          Just select one of our packages and relax back at home without
+          being concerned about the prices.
+        </p>
+      </div>
+    </div>
+    <div class="row ftco-animate">
+      <div class="col-md-12">
+        <div class="carousel-subscription owl-carousel">
+          <div class="item">
+            <div class="card px-3 pt-3 text-center styled-border styled-border--lined__thin">
+              <h1 class="border-bottom p-3 text-primary">Standard</h1>
+              <p class="lead p-3 text-info border-bottom">
+                ₹1550/Month
+              </p>
+              <ul class="list-unstyled p-3 text-primary">
+                <li class="pb-2">Upto 4 Books</li>
+                
+                <li class="p-2">Any books under ₹500 </li>
+                <li class="p-2">Free Home Delivery</li>
+              </ul>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card px-3 pt-3 text-center styled-border styled-border--lined__thin">
+              <h1 class="border-bottom p-3 text-primary">
+               Premium
+              </h1>
+              <p class="lead p-3 text-info border-bottom">
+                ₹2850/Month
+              </p>
+              <ul class="list-unstyled p-3 text-primary">
+                <li class="pb-2">Upto 6 Books</li>
+                <li class="p-2">Any Books under ₹600</li>
+                <li class="p-2">Free Home Delivery</li>
+              </ul>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card px-3 pt-3 text-center styled-border styled-border--lined__thin">
+              <h1 class="border-bottom p-3 text-primary">
+               Premium (Yearly)
+              </h1>
+              <p class="lead p-3 text-info border-bottom">
+                ₹30000/Year
+              </p>
+              <ul class="list-unstyled p-3 text-primary">
+                <li class="pb-2">Unlimited Books*(6 per Month)</li>
+                <li class="p-2">No Price limits</li>
+                <li class="p-2">Free Home Delivery</li>
+            
+              </ul>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card px-3 pt-3 text-center styled-border styled-border--lined__thin">
+              <h1 class="border-bottom p-3 text-primary">Regular</h1>
+              <p class="lead p-3 text-info border-bottom">
+                ₹750/Month
+              </p>
+              <ul class="list-unstyled p-3 text-primary">
+                <li class="pb-2">Upto 2 Books</li>
+
+                <li class="p-2">Any Books under ₹400 </li>
+                <li class="p-2">50% Discount on Home Delivery</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-5 my-3 ftco-animate">
+    <h5>
+      <a class="btn btn-primary styled-border translate-up d-inline-block" href="subscription.html" role="button">Know
+        More</a>
+    </h5>
+  </div>
+</section>
+{% endblock %}
